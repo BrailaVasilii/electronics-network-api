@@ -80,7 +80,9 @@ class NetworkNodeAdminTest(TestCase):
         # Check if it contains HTML link elements
         self.assertIn('<a href=', supplier_link_html)
         self.assertIn(self.factory.name, supplier_link_html)
-        self.assertIn('admin:network_networknode_change', supplier_link_html)
+        # Verify the HTML contains a link to the supplier's admin page
+        self.assertIn('/admin/network/networknode/', supplier_link_html)
+        self.assertIn(f'/admin/network/networknode/{self.factory.id}/change/', supplier_link_html)
 
     def test_supplier_link_returns_dash_for_node_without_supplier(self):
         """Test supplier_link returns '-' for node without supplier"""
