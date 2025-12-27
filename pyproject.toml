@@ -41,12 +41,20 @@ python_files = ["tests.py", "test_*.py", "*_tests.py"]
 addopts = "--tb=short"
 
 [tool.coverage.run]
-source = "."
+source = ["."]
 omit = [
-    "*/venv/*",
-    "*/migrations/*",
-    "manage.py",
-    "*/settings/*",
     "*/tests/*",
-    "*/__pycache__/*"
+    "*/migrations/*",
+    "*/__pycache__/*",
+    "*/venv/*",
+    "*/env/*",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
 ]
