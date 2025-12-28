@@ -1,0 +1,47 @@
+# Development override for docker-compose.yml
+# This file provides development-specific configurations
+# Use: docker-compose -f docker-compose.yml -f docker-compose.override.yml up
+
+version: '3.8'
+
+services:
+  web:
+    # Override the command to use Django's development server
+    command: >
+      bash -c "
+        python manage.py runserver 0.0.0.0:8000
+      "
+    environment:
+      # Enable Django debug mode
+      - DEBUG=True
+      - DJANGO_SETTINGS_MODULE=config.settings
+    volumes:
+      # Enable auto-reload on code changes
+      - .:/app
+      - /app/.venv  # Exclude virtual environment from volume mount
+    ports:
+      - "8000:8000"
+    stdin_open: true
+    tty: true
+
+  db:
+    # Expose PostgreSQL port for development tools
+    ports:
+      - "5432:5432"
+    environment:
+      # Development database settings
+      - POSTGRES_DB=electronics_network_dev
+      - POSTGRES_USER=dev_user
+      - POSTGRES_PASSWORD=dev_pass
+    volumes:
+      # Use named volume for development data persistence
+      - postgres_dev_data:/var/lib/postgresql/data
+
+  redis:
+    # Expose Redis port for development tools
+    ports:
+      - "6379:6379"
+
+volumes:
+  postgres_dev_data:
+    name: electronics_network_dev_postgres_data
