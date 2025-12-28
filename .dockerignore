@@ -1,0 +1,84 @@
+# Git
+.git
+.gitignore
+README.md
+.github
+
+# Python
+__pycache__
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+.env/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Django
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media/
+
+# Environment files
+.env
+.env.local
+.env.production
+
+# Testing
+.coverage
+htmlcov/
+.tox/
+.pytest_cache/
+
+# Documentation
+docs/
+*.md
+
+# Docker
+Dockerfile
+docker-compose*.yml
+.dockerignore
+
+# Node modules (if any)
+node_modules/
+
+# Static files (will be collected in container)
+staticfiles/
+static/
+
+# Temporary files
+*.tmp
+*.temp
+.cache/

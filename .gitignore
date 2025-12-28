@@ -213,3 +213,4 @@ media/
 static/
 staticfiles/
 /.claude/
+.idea/
